@@ -22,7 +22,7 @@ impl Component for LuaComponentRef {
         self.clone()
     }
 
-    fn lua_call(&self, name: String, args: AnyUserData) {
+    fn lua_call(&self, name: String, args: AnyUserData) -> Option<AnyUserData> {
         self.0.lua_call(name, args)
     }
 }
@@ -37,7 +37,8 @@ impl UserData for LuaComponentRef {
     fn add_methods<'lua, M: UserDataMethods<'lua, Self>>(methods: &mut M) {
         methods.add_method("parent", |_, this, ()| Ok(this.parent()));
         methods.add_meta_method(MetaMethod::Call, |_, this, (method_name, args): (String, AnyUserData)| {
-            Ok(this.lua_call(method_name, args))
+            this.lua_call(method_name, args);
+            Ok(())
         });
     }
 }

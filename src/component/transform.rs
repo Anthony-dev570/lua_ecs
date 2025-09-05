@@ -28,7 +28,7 @@ impl Component for Transform {
         self.clone()
     }
 
-    fn lua_call(&self, name: String, args: AnyUserData) {
+    fn lua_call(&self, name: String, args: AnyUserData) -> Option<AnyUserData> {
         todo!()
     }
 }

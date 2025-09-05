@@ -96,7 +96,7 @@ impl Component for Camera {
         self.clone()
     }
 
-    fn lua_call(&self, name: String, args: AnyUserData) {
+    fn lua_call(&self, name: String, args: AnyUserData) -> Option<AnyUserData> {
         match &*name {
             "fov" => {
                 if let Ok(fov) = args.borrow::<AngleF>() {
@@ -105,6 +105,7 @@ impl Component for Camera {
             },
             &_ => {}
         }
+        None
     }
 }
 impl ComponentInitializer for Camera {
