@@ -1,0 +1,9 @@
+[package]
+name = "lua_ecs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rlua = { version = "*", features = ["builtin-lua54"] }
+mlua = "*"
+lua_mathematics = { git = "https://github.com/Anthony-dev570/lua_mathematics.git" }

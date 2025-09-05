@@ -10,7 +10,7 @@ pub trait Component {
     fn name(&self) -> String;
     fn cloned(&self) -> Self where Self: Sized;
 
-    fn lua_call(&self, name: String, args: AnyUserData);
+    fn lua_call(&self, name: String, args: AnyUserData) -> Option<AnyUserData>;
 }
 
 pub trait ComponentInitializer: Component {
